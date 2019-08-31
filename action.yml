@@ -1,0 +1,23 @@
+name: 'SCP Action'
+description: 'SCP Files to Given Host'
+author: Tony Ranieri
+inputs: 
+  key:
+    description: 'SSH private key'
+  user:
+    description: 'SSH user for given key'
+  hostname:
+    description: 'Hostname or server IP'
+  source:
+    description: 'Source folder/files to transfer'
+  destination:
+    description: 'Destination on remote server to store files'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.key }}
+    - ${{ inputs.user }}
+    - ${{ inputs.hostname }}
+    - ${{ inputs.source }}
+    - ${{ inputs.destination }}
